@@ -42,7 +42,14 @@ function renderProgressbarHP(person) {
     person.elProgressbar.style.width = person.damageHP + '%';
 }
 function changeHP(count, person) {
-    person.damageHP -= count;
+    if (person.damageHP < count) {
+        person.damageHP = 0;
+        alert('Бедный '+ person.name +' проиграл схватку!');
+        $btn.disabled = true;
+    } else {
+        person.damageHP -= count;
+    }
+    
     renderHP(person);
 
 }
